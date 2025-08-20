@@ -13,7 +13,9 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 FILE(GLOB pieceSources src/piece/*.cpp)
+FILE(GLOB fieldSources src/field/*.cpp)
+FILE(GLOB gameSources src/game/*.cpp)
 
-add_executable(main src/main.cpp src/assets/AssetManager.cpp ${pieceSources})
+add_executable(main src/main.cpp src/assets/AssetManager.cpp ${pieceSources} ${fieldSources} ${gameSources})
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)

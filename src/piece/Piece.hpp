@@ -15,6 +15,14 @@ class Piece {
         Piece(const Piece &piece);
         Piece(TetrominoColor color, std::vector<TetrominoShape> rotations);
 
+        static const Piece I;
+        static const Piece O;
+        static const Piece T;
+        static const Piece J;
+        static const Piece L;
+        static const Piece S;
+        static const Piece Z;
+
         void summon(int x, int y);
 
         TetrominoShape getCurrentRotation();
@@ -23,14 +31,4 @@ class Piece {
 
         void rotateRight();
         void rotateLeft();
-};
-
-namespace PredefinedPiece {
-    extern Piece I;
-    extern Piece O;
-    extern Piece T;
-    extern Piece J;
-    extern Piece L;
-    extern Piece S;
-    extern Piece Z;
 };
