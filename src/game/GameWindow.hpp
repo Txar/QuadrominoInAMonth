@@ -5,6 +5,8 @@
 #include "../piece/Piece.hpp"
 #include "../field/DrawableField.hpp"
 #include "../field/SimulationField.hpp"
+#include "PieceQueue.hpp"
+#include "Controller.hpp"
 
 class TextureLoader {
 public:
@@ -16,7 +18,7 @@ public:
 };
 
 class GameWindow {
-private:
+public:
     sf::RenderWindow window;
     DrawableField field;
     SimulationField simulationField;
@@ -26,11 +28,16 @@ private:
     sf::Clock gravityClock;
     sf::Time currentGravityTickTime;
 
+    PieceQueue pieceQueue;
     Piece currentPiece;
 
-    static void initializeAssets();
+    Controller controller;
 
-public:
+    bool attemptMovement(int x);
+    bool attemptRotation(bool clockwise);
+
+    void executeGameTick();
+    void dropNextPiece();
     GameWindow();
     ~GameWindow();
 

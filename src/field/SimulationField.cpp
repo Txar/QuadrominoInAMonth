@@ -1,7 +1,9 @@
 #include "SimulationField.hpp"
+#include <iostream>
 
 SimulationField::SimulationField(int width, int height)
-    : TetrominoField(width, height) {};
+    : TetrominoField(width, height) {
+    };
 
 bool SimulationField::isValidPosition(Piece &piece) {
     TetrominoShape shape = piece.getCurrentRotation();

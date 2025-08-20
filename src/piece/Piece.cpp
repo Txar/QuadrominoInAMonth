@@ -1,8 +1,14 @@
 #include "Piece.hpp"
+#include <iostream>
 
-Piece::Piece(const Piece &piece) : color(piece.color), rotations(piece.rotations), rotationIndex(piece.rotationIndex), x(piece.x), y(piece.y) {}
+Piece::Piece(const Piece &piece) : color(piece.color), rotations(piece.rotations), rotationIndex(piece.rotationIndex), x(piece.x), y(piece.y)
+{
+}
+
 Piece::Piece(TetrominoColor color, std::vector<TetrominoShape> rotations)
-    : color(color), rotations(rotations), rotationIndex(0), x(0), y(0) {}
+    : color(color), rotations(rotations), rotationIndex(0), x(0), y(0)
+{
+}
 
 void Piece::summon(int x, int y)
 {
