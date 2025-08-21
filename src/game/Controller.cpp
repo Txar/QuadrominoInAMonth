@@ -190,7 +190,7 @@ GameState Controller::handleEvent(EventType event)
         gameWindow->executeGameTick();
         return GameState::Neutral;
     case EventType::HardDrop:
-        // Handle hard drop
+        gameWindow->performHardDrop();
         return GameState::Neutral;
     case EventType::WindowClose:
         gameWindow->window.close();

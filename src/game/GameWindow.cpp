@@ -19,7 +19,8 @@ void GameWindow::dropNextPiece()
     currentPiece.summon(FIELD_WIDTH / 2 - 1, 1);
     piecesDropped++;
     int index = 0;
-    for (Level i : levels) {
+    for (Level i : levels)
+    {
         if (simulationField.clearedLines >= i.first)
         {
             currentGravityTickTime = sf::seconds(i.second);
@@ -28,6 +29,28 @@ void GameWindow::dropNextPiece()
         index++;
     }
     std::cout << "Line clears: " << simulationField.clearedLines << ", pieces dropped: " << piecesDropped << ", current level: " << currentLevel << ", gravity tick time: " << currentGravityTickTime.asSeconds() << " seconds" << std::endl;
+}
+
+void GameWindow::performHardDrop()
+{
+    while (simulationField.isValidPosition(currentPiece))
+    {
+        currentPiece.y++;
+    }
+    currentPiece.y--;
+    simulationField.stampPiece(currentPiece);
+    dropNextPiece();
+}
+
+void GameWindow::drawGhostPiece() {
+    Piece ghostPiece(currentPiece);
+    ghostPiece.color = QuadrominoColor::GHOST;
+    while (simulationField.isValidPosition(ghostPiece))
+    {
+        ghostPiece.y++;
+    }
+    ghostPiece.y--;
+    field.stampPiece(ghostPiece);
 }
 
 void GameWindow::executeGameTick()
@@ -121,6 +144,7 @@ int GameWindow::mainLoop()
 
         window.clear(sf::Color::Black);
 
+        drawGhostPiece();
         field.stampPiece(currentPiece);
         field.render();
         sf::Sprite s(field.buffer.getTexture());

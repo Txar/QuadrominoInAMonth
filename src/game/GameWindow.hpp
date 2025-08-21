@@ -63,6 +63,8 @@ public:
     bool attemptMovement(int x);
     bool attemptRotation(bool clockwise);
 
+    void drawGhostPiece();
+    void performHardDrop();
     void executeGameTick();
     void dropNextPiece();
     GameWindow();

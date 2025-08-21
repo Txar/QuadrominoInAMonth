@@ -8,7 +8,8 @@ enum QuadrominoColor {
     ORANGE,
     GREEN,
     RED,
-    GRAY
+    GRAY,
+    GHOST
 };
 
 inline constexpr int ColorPosition(QuadrominoColor color) {
@@ -21,6 +22,7 @@ inline constexpr int ColorPosition(QuadrominoColor color) {
         case GREEN: return 5;
         case RED: return 6;
         case GRAY: return 7;
+        case GHOST: return 8;
     }
     return -1; // Invalid color
 }
