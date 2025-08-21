@@ -5,7 +5,7 @@ Piece::Piece(const Piece &piece) : color(piece.color), rotations(piece.rotations
 {
 }
 
-Piece::Piece(TetrominoColor color, std::vector<TetrominoShape> rotations)
+Piece::Piece(QuadrominoColor color, std::vector<QuadrominoShape> rotations)
     : color(color), rotations(rotations), rotationIndex(0), x(0), y(0)
 {
 }
@@ -16,17 +16,17 @@ void Piece::summon(int x, int y)
     this->y = y;
 }
 
-TetrominoShape Piece::getCurrentRotation()
+QuadrominoShape Piece::getCurrentRotation()
 {
     return rotations.at(rotationIndex % rotations.size());
 }
 
-TetrominoShape Piece::getRotationRight()
+QuadrominoShape Piece::getRotationRight()
 {
     return rotations.at((rotationIndex + 1) % rotations.size());
 }
 
-TetrominoShape Piece::getRotationLeft()
+QuadrominoShape Piece::getRotationLeft()
 {
     return rotations.at((rotationIndex - 1 + rotations.size()) % rotations.size());
 }

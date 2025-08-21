@@ -13,20 +13,20 @@ class DrawableBlock
 {
 public:
     bool isForeground;
-    TetrominoColor color;
+    QuadrominoColor color;
 
-    DrawableBlock(bool isForeground, TetrominoColor color)
+    DrawableBlock(bool isForeground, QuadrominoColor color)
         : isForeground(isForeground), color(color) {};
 };
 
-class TetrominoField
+class QuadrominoField
 {
 public:
     std::vector<std::vector<DrawableBlock>> field;
     int width, height;
-    void setBlock(int x, int y, TetrominoColor color, bool isForeground);
+    void setBlock(int x, int y, QuadrominoColor color, bool isForeground);
     void stampPiece(Piece piece);
     void clear();
 
-    TetrominoField(int width, int height);
+    QuadrominoField(int width, int height);
 };

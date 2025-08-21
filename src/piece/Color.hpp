@@ -1,6 +1,6 @@
 #pragma once
 
-enum TetrominoColor {
+enum QuadrominoColor {
     LIGHT_BLUE,
     YELLOW,
     PINK,
@@ -11,7 +11,7 @@ enum TetrominoColor {
     GRAY
 };
 
-inline constexpr int ColorPosition(TetrominoColor color) {
+inline constexpr int ColorPosition(QuadrominoColor color) {
     switch (color) {
         case LIGHT_BLUE: return 0;
         case YELLOW: return 1;

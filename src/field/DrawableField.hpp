@@ -1,8 +1,8 @@
 #pragma once
-#include "TetrominoField.hpp"
+#include "QuadrominoField.hpp"
 #include <SFML/Graphics.hpp>
 
-class DrawableField : public TetrominoField {
+class DrawableField : public QuadrominoField {
     public:
         sf::RenderTexture buffer;
         sf::Sprite sprite;

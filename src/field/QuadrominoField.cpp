@@ -1,7 +1,7 @@
-#include "TetrominoField.hpp"
+#include "QuadrominoField.hpp"
 #include <stdexcept>
 
-TetrominoField::TetrominoField(int width, int height)
+QuadrominoField::QuadrominoField(int width, int height)
     : width(width), height(height)
 {
     for (int i = 0; i < width; i++)
@@ -15,7 +15,7 @@ TetrominoField::TetrominoField(int width, int height)
     }
 }
 
-void TetrominoField::clear()
+void QuadrominoField::clear()
 {
     for (int i = 0; i < width; i++)
     {
@@ -27,7 +27,7 @@ void TetrominoField::clear()
     }
 }
 
-void TetrominoField::setBlock(int x, int y, TetrominoColor color, bool isForeground)
+void QuadrominoField::setBlock(int x, int y, QuadrominoColor color, bool isForeground)
 {
     if (x < 0 || x >= width || y < 0 || y >= height)
     {
@@ -36,9 +36,9 @@ void TetrominoField::setBlock(int x, int y, TetrominoColor color, bool isForegro
     field.at(x).at(y) = DrawableBlock(isForeground, color);
 }
 
-void TetrominoField::stampPiece(Piece piece)
+void QuadrominoField::stampPiece(Piece piece)
 {
-    TetrominoShape shape = piece.getCurrentRotation();
+    QuadrominoShape shape = piece.getCurrentRotation();
     for (int i = 0; i < shape.size(); i++)
     {
         for (int j = 0; j < shape[i].size(); j++)

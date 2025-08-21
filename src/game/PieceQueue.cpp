@@ -1,6 +1,7 @@
 #include "PieceQueue.hpp"
 #include <iostream>
 #include <random>
+#include <ctime>
 
 Piece PieceQueue::getNextPiece()
 {
@@ -47,5 +48,6 @@ void PieceQueue::shuffleAndFillPieceQueue()
 
 PieceQueue::PieceQueue()
 {
+    std::srand(std::time(0));
     shuffleAndFillPieceQueue();
 }

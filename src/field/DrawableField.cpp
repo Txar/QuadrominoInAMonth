@@ -1,7 +1,7 @@
 #include "DrawableField.hpp"
 
 DrawableField::DrawableField(int width, int height, sf::Texture &blockTexture, int scale_factor, int block_size)
-    : TetrominoField(width, height),
+    : QuadrominoField(width, height),
       buffer({(unsigned int)width * scale_factor * block_size, (unsigned int)height * scale_factor * block_size}),
       sprite(blockTexture),
       scale_factor(scale_factor),

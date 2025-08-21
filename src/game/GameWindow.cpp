@@ -14,8 +14,20 @@ TextureLoader::~TextureLoader()
 
 void GameWindow::dropNextPiece()
 {
+    swappedOnThisPiece = false;
     currentPiece = pieceQueue.getNextPiece();
     currentPiece.summon(FIELD_WIDTH / 2 - 1, 1);
+    piecesDropped++;
+    int index = 0;
+    for (Level i : levels) {
+        if (simulationField.clearedLines >= i.first)
+        {
+            currentGravityTickTime = sf::seconds(i.second);
+            currentLevel = index;
+        }
+        index++;
+    }
+    std::cout << "Line clears: " << simulationField.clearedLines << ", pieces dropped: " << piecesDropped << ", current level: " << currentLevel << ", gravity tick time: " << currentGravityTickTime.asSeconds() << " seconds" << std::endl;
 }
 
 void GameWindow::executeGameTick()
@@ -73,18 +85,19 @@ bool GameWindow::attemptRotation(bool clockwise)
 
 GameWindow::GameWindow()
     : textureLoader(),
-      window(sf::VideoMode({(FIELD_WIDTH + 2) * BLOCK_SIZE * SCALE_FACTOR, (FIELD_HEIGHT + 2) * BLOCK_SIZE * SCALE_FACTOR}), "Tetromino In A Month by Txar"),
+      window(sf::VideoMode({(FIELD_WIDTH + 2) * BLOCK_SIZE * SCALE_FACTOR, (FIELD_HEIGHT + 2) * BLOCK_SIZE * SCALE_FACTOR}), "Quadromino In A Month by Txar"),
       field(FIELD_WIDTH + 2, FIELD_HEIGHT + 2, textureLoader.block, SCALE_FACTOR, BLOCK_SIZE),
       simulationField(FIELD_WIDTH + 2, FIELD_HEIGHT + 2),
       pieceQueue(),
       currentPiece(pieceQueue.getNextPiece()),
-      controller(this)
+      controller(this),
+      swapPiece(Piece::I)
 {
     window.setFramerateLimit(144);
     currentPiece.summon(FIELD_WIDTH / 2 - 1, 1);
 
     gravityClock = sf::Clock();
-    currentGravityTickTime = sf::seconds(60 * 0.01667f);
+    currentGravityTickTime = sf::seconds((1 / 0.01667f) / 60);
 }
 
 int GameWindow::mainLoop()

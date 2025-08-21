@@ -2,18 +2,18 @@
 #include "Color.hpp"
 #include <vector>
 
-typedef std::vector<std::vector<bool>> TetrominoShape;
+typedef std::vector<std::vector<bool>> QuadrominoShape;
 
 class Piece {
     public:
-        TetrominoColor color;
+        QuadrominoColor color;
 
-        std::vector<TetrominoShape> rotations;
+        std::vector<QuadrominoShape> rotations;
         int rotationIndex;
         int x, y;
     
         Piece(const Piece &piece);
-        Piece(TetrominoColor color, std::vector<TetrominoShape> rotations);
+        Piece(QuadrominoColor color, std::vector<QuadrominoShape> rotations);
 
         static const Piece I;
         static const Piece O;
@@ -25,9 +25,9 @@ class Piece {
 
         void summon(int x, int y);
 
-        TetrominoShape getCurrentRotation();
-        TetrominoShape getRotationRight();
-        TetrominoShape getRotationLeft();
+        QuadrominoShape getCurrentRotation();
+        QuadrominoShape getRotationRight();
+        QuadrominoShape getRotationLeft();
 
         void rotateRight();
         void rotateLeft();
