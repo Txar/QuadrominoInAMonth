@@ -83,27 +83,12 @@ bool GameWindow::attemptMovement(int x)
     }
 }
 
-bool GameWindow::attemptRotation(bool clockwise)
-{
-    Piece newPiece(currentPiece);
-    if (clockwise)
-    {
-        newPiece.rotateRight();
-    }
-    else
-    {
-        newPiece.rotateLeft();
-    }
+void GameWindow::attemptRotationRight() {
+    currentPiece = simulationField.attemptPieceRotationRight(currentPiece);
+}
 
-    if (simulationField.isValidPosition(newPiece))
-    {
-        currentPiece = newPiece;
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+void GameWindow::attemptRotationLeft() {
+    currentPiece = simulationField.attemptPieceRotationLeft(currentPiece);
 }
 
 GameWindow::GameWindow()

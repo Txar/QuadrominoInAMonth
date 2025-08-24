@@ -33,21 +33,26 @@ public:
     int piecesDropped = 0;
     int currentLevel = 0;
     std::vector<Level> levels = {
-        {0 / 2, (1 / 0.016f) / 60},
-        {10 / 2, (1 / 0.021f) / 60},
-        {20 / 2, (1 / 0.026f) / 60},
-        {40 / 2, (1 / 0.035f) / 60},
-        {80 / 2, (1 / 0.046f) / 60},
-        {120 / 2, (1 / 0.063f) / 60},
-        {160 / 2, (1 / 0.087f) / 60},
-        {200 / 2, (1 / 0.123f) / 60},
-        {240 / 2, (1 / 0.177f) / 60},
-        {300 / 2, (1 / 0.259f) / 60},
-        {380 / 2, (1 / 0.388f) / 60},
-        {460 / 2, (1 / 0.59f) / 60},
-        {540 / 2, (1 / 0.92f) / 60},
-        {620 / 2, (1 / 1.46f) / 60},
-        {800 / 2, (1 / 2.36f) / 60},
+        {0 / 2,   1.1111f},
+        {10 / 2,  0.8333f},
+        {20 / 2,  0.6666f},
+        {40 / 2,  0.4777f},
+        {80 / 2,  0.3777f},
+        {120 / 2, 0.2777f},
+        {160 / 2, 0.1888f},
+        {200 / 2, 0.1388f},
+        {240 / 2, 0.0925f},
+        {300 / 2, 0.0641f},
+        {380 / 2, 0.0427f},
+        {460 / 2, 0.0277f},
+        {540 / 2, 0.0183f},
+        {620 / 2, 0.0114f},
+        {700 / 2, 0.0098f},
+        {800 / 2, 0.0084f},
+        {900 / 2, 0.0072f},
+        {1000 / 2, 0.0063f},
+        {1500 / 2, 0.0052f},
+        {2000 / 2, 0.0047f}
     };
 
     TextureLoader textureLoader;
@@ -61,7 +66,9 @@ public:
     Controller controller;
 
     bool attemptMovement(int x);
-    bool attemptRotation(bool clockwise);
+    // void attemptRotation(bool clockwise);
+    void attemptRotationRight();
+    void attemptRotationLeft();
 
     void drawGhostPiece();
     void performHardDrop();

@@ -181,10 +181,12 @@ GameState Controller::handleEvent(EventType event)
         gameWindow->attemptMovement(1);
         return GameState::Neutral;
     case EventType::RotateLeft:
-        gameWindow->attemptRotation(false);
+        // gameWindow->attemptRotation(false);
+        gameWindow->attemptRotationLeft();
         return GameState::Neutral;
     case EventType::RotateRight:
-        gameWindow->attemptRotation(true);
+        // gameWindow->attemptRotation(true);
+        gameWindow->attemptRotationRight();
         return GameState::Neutral;
     case EventType::SoftDrop:
         gameWindow->executeGameTick();

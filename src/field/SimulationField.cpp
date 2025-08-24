@@ -21,6 +21,42 @@ bool SimulationField::isValidPosition(Piece &piece) {
     return true;
 }
 
+Piece SimulationField::attemptPieceRotation(Piece &piece, bool clockwise) {
+    const std::vector<int> shifts = {0, 1, -1, 2, -2};
+    int shiftIndex = 0;
+    Piece newPiece = Piece(piece);;
+
+    do {
+        newPiece = Piece(piece);
+        if (clockwise)
+            newPiece.rotateRight();
+        else {
+            newPiece.rotateLeft();
+        }
+
+        newPiece.x += shifts.at(shiftIndex);
+        for (int shiftY : shifts) {
+            newPiece.y += shiftY;
+            if (isValidPosition(newPiece)) {
+                return newPiece;
+            }
+        }
+
+    } while (!isValidPosition(newPiece) && ++shiftIndex < (int) shifts.size());
+
+    return piece;
+}
+
+Piece SimulationField::attemptPieceRotationRight(Piece &piece) {
+    Piece newPiece = attemptPieceRotation(piece, true);
+    return newPiece;
+}
+
+Piece SimulationField::attemptPieceRotationLeft(Piece &piece) {
+    Piece newPiece = attemptPieceRotation(piece, false);
+    return newPiece;
+}
+
 void SimulationField::stampPiece(Piece piece) {
     QuadrominoField::stampPiece(piece);
     findAndClearLines();

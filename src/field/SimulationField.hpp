@@ -10,9 +10,11 @@ private:
     void shiftAllLines(int above);
     void clearLine(int line);
     void findAndClearLines();
-    void rebuildFrame();
-
-public:
+    Piece attemptPieceRotation(Piece &piece, bool clockwise);
+    
+    public:
+    Piece attemptPieceRotationRight(Piece &piece);
+    Piece attemptPieceRotationLeft(Piece &piece);
     int clearedLines = 0;
     SimulationField(int width, int height);
     bool isValidPosition(Piece &piece);
