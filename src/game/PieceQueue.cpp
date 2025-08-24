@@ -38,6 +38,7 @@ void PieceQueue::shuffleAndFillPieceQueue()
         for (int i = 7; i > 0; i--)
         {
             int index = std::rand() % i;
+            allPieces.at(index).color = i - 1;
             pieces.push_back(allPieces.at(index));
             allPieces.erase(allPieces.begin() + index);
         }

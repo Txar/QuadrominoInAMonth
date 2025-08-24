@@ -56,6 +56,7 @@ public:
     };
 
     TextureLoader textureLoader;
+    ShaderLoader shaderLoader;
 
     sf::Clock gravityClock;
     sf::Time currentGravityTickTime;

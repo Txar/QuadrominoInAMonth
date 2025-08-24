@@ -1,5 +1,4 @@
 #include "SimulationField.hpp"
-#include <iostream>
 
 SimulationField::SimulationField(int width, int height)
     : QuadrominoField(width, height) {
@@ -85,23 +84,22 @@ void SimulationField::findAndClearLines() {
 void SimulationField::shiftAllLines(int above) {
     for (int j = above; j > 0; j--) {
         shiftLineDown(j, 1);
-        // break;
     }
 }
 
 void SimulationField::clearLine(int line) {
     for (int i = 0; i < width; i++) {
-        if (field.at(i).at(line).color != GRAY) {
-            field.at(i).at(line) = DrawableBlock(i == 0 || i == width - 1, GRAY);
+        if (field.at(i).at(line).color != QuadrominoColor::GRAY) {
+            field.at(i).at(line) = DrawableBlock(i == 0 || i == width - 1, QuadrominoColor::GRAY, true);
         }
     }
 }
 
 void SimulationField::pasteLineDown(int line, int shiftBy) {
     for (int i = 0; i < width; i++) {
-        if (field.at(i).at(line).color != GRAY || !field.at(i).at(line).isForeground) {
+        if (field.at(i).at(line).color != QuadrominoColor::GRAY || !field.at(i).at(line).isForeground) {
             DrawableBlock d = field.at(i).at(line);
-            field.at(i).at(line + shiftBy) = DrawableBlock(d.isForeground, d.color);
+            field.at(i).at(line + shiftBy) = DrawableBlock(d.isForeground, d.color, d.isStatic);
         }
     }
 }

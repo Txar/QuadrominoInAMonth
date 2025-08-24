@@ -10,7 +10,7 @@ QuadrominoField::QuadrominoField(int width, int height)
         for (int j = 0; j < height; j++)
         {
             field.at(i).push_back(DrawableBlock(
-                i == 0 || i == width - 1 || j == 0 || j == height - 1, GRAY));
+                i == 0 || i == width - 1 || j == 0 || j == height - 1, QuadrominoColor::GRAY, true));
         }
     }
 }
@@ -22,12 +22,12 @@ void QuadrominoField::clear()
         for (int j = 0; j < height; j++)
         {
             field.at(i).at(j) = (DrawableBlock(
-                i == 0 || i == width - 1 || j == 0 || j == height - 1, GRAY));
+                i == 0 || i == width - 1 || j == 0 || j == height - 1, QuadrominoColor::GRAY, true));
         }
     }
 }
 
-void QuadrominoField::setBlock(int x, int y, QuadrominoColor color, bool isForeground)
+void QuadrominoField::setBlock(int x, int y, ColorIndex color, bool isForeground)
 {
     if (x < 0 || x >= width || y < 0 || y >= height)
     {

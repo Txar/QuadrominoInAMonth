@@ -6,14 +6,14 @@ typedef std::vector<std::vector<bool>> QuadrominoShape;
 
 class Piece {
     public:
-        QuadrominoColor color;
+        ColorIndex color;
 
         std::vector<QuadrominoShape> rotations;
         int rotationIndex;
         int x, y;
     
         Piece(const Piece &piece);
-        Piece(QuadrominoColor color, std::vector<QuadrominoShape> rotations);
+        Piece(ColorIndex color, std::vector<QuadrominoShape> rotations);
 
         static const Piece I;
         static const Piece O;

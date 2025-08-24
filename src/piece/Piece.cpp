@@ -5,7 +5,7 @@ Piece::Piece(const Piece &piece) : color(piece.color), rotations(piece.rotations
 {
 }
 
-Piece::Piece(QuadrominoColor color, std::vector<QuadrominoShape> rotations)
+Piece::Piece(ColorIndex color, std::vector<QuadrominoShape> rotations)
     : color(color), rotations(rotations), rotationIndex(0), x(0), y(0)
 {
 }
@@ -41,10 +41,10 @@ void Piece::rotateLeft()
     rotationIndex = (rotationIndex + 1) % rotations.size();
 }
 
-const Piece Piece::O = Piece(YELLOW, {{{1, 1},
+const Piece Piece::O = Piece(0, {{{1, 1},
                                        {1, 1}}});
 
-const Piece Piece::I = Piece(LIGHT_BLUE, {
+const Piece Piece::I = Piece(0, {
                                              {
                                                  {0, 0, 0, 0},
                                                  {1, 1, 1, 1},
@@ -71,7 +71,7 @@ const Piece Piece::I = Piece(LIGHT_BLUE, {
                                              },
                                          });
 
-const Piece Piece::T = Piece(PINK, {
+const Piece Piece::T = Piece(0, {
                                        {
                                            {0, 1, 0},
                                            {1, 1, 1},
@@ -94,7 +94,7 @@ const Piece Piece::T = Piece(PINK, {
                                        },
                                    });
 
-const Piece Piece::J = Piece(NAVY_BLUE, {
+const Piece Piece::J = Piece(0, {
                                             {
                                                 {1, 0, 0},
                                                 {1, 1, 1},
@@ -117,7 +117,7 @@ const Piece Piece::J = Piece(NAVY_BLUE, {
                                             },
                                         });
 
-const Piece Piece::L = Piece(ORANGE, {
+const Piece Piece::L = Piece(0, {
                                          {
                                              {0, 0, 1},
                                              {1, 1, 1},
@@ -140,7 +140,7 @@ const Piece Piece::L = Piece(ORANGE, {
                                          },
                                      });
 
-const Piece Piece::S = Piece(GREEN, {
+const Piece Piece::S = Piece(0, {
                                         {
                                             {0, 1, 1},
                                             {1, 1, 0},
@@ -163,7 +163,7 @@ const Piece Piece::S = Piece(GREEN, {
                                         },
                                     });
 
-const Piece Piece::Z = Piece(RED, {
+const Piece Piece::Z = Piece(0, {
                                       {
                                           {1, 1, 0},
                                           {0, 1, 1},

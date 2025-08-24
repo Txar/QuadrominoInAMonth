@@ -1,0 +1,3 @@
+Shift-In - when you slide a piece into place by shifting it with a rotation, the more in a row, the greater point bonus
+Cleanup - when you clear all blocks from the screen
+Quadruple - when you clear 4 lines at once (with an I piece)

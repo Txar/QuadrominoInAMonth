@@ -44,13 +44,12 @@ void GameWindow::performHardDrop()
 
 void GameWindow::drawGhostPiece() {
     Piece ghostPiece(currentPiece);
-    ghostPiece.color = QuadrominoColor::GHOST;
     while (simulationField.isValidPosition(ghostPiece))
     {
         ghostPiece.y++;
     }
     ghostPiece.y--;
-    field.stampPiece(ghostPiece);
+    field.drawGhost(ghostPiece);
 }
 
 void GameWindow::executeGameTick()
@@ -92,9 +91,9 @@ void GameWindow::attemptRotationLeft() {
 }
 
 GameWindow::GameWindow()
-    : textureLoader(),
+    : textureLoader(), shaderLoader(),
       window(sf::VideoMode({(FIELD_WIDTH + 2) * BLOCK_SIZE * SCALE_FACTOR, (FIELD_HEIGHT + 2) * BLOCK_SIZE * SCALE_FACTOR}), "Quadromino In A Month by Txar"),
-      field(FIELD_WIDTH + 2, FIELD_HEIGHT + 2, textureLoader.block, SCALE_FACTOR, BLOCK_SIZE),
+      field(FIELD_WIDTH + 2, FIELD_HEIGHT + 2, textureLoader.block, &shaderLoader, SCALE_FACTOR, BLOCK_SIZE),
       simulationField(FIELD_WIDTH + 2, FIELD_HEIGHT + 2),
       pieceQueue(),
       currentPiece(pieceQueue.getNextPiece()),
@@ -129,8 +128,9 @@ int GameWindow::mainLoop()
 
         window.clear(sf::Color::Black);
 
+        field.draw();
         drawGhostPiece();
-        field.stampPiece(currentPiece);
+        field.drawPiece(currentPiece);
         field.render();
         sf::Sprite s(field.buffer.getTexture());
         s.setPosition({0, 0});
